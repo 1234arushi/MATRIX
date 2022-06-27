@@ -1,5 +1,5 @@
 //ques-Given a square matrix, turn it by 90 degrees in anti-clockwise direction without using any extra space.
-//ques-mirror image
+
 #include<bits/stdc++.h>
 using namespace std;
 #define R 4
