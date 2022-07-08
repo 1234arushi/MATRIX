@@ -9,6 +9,38 @@ class Solution{
 public:
 	int rowWithMax1s(vector <vector<int>> arr, int n, int m) {
 	    
+	    
+	    
+	    //Method 2:TC->O(m+n) SC->O(1)
+	    //how TC is O(m+n)??
+	    int j=m-1;
+	    int row_index=0;//initialize 1st row as row with max 1s
+	    for(int i=0;i<n;i++)
+	    {
+	        bool flag=false;//false for evry row
+	        while(j>=0 && arr[i][j]==1)
+	        {
+	            j=j-1;
+	            flag=true;
+	        }
+	        if(flag)
+	        {
+	            row_index=i;
+	        }
+	    }
+	    //row_index not changed then it means that
+	    //first row does not contain 1s or that first row has max 1s
+	    //but we are returning -1 when our first row has 0 1s
+	    // so for that we need to make sure that its last element=0
+	    if(row_index==0 && arr[0][m-1]==0)
+	    {
+	        return -1;
+	    }
+	    return row_index;
+	    
+	    
+	    
+	    /*Method 1:TC->O(m*n)  SC->O(1)
 	    int maxcount=INT_MIN;
 	    int rowindex=0,count;
 	    for(int i=0;i<n;i++)
@@ -33,7 +65,7 @@ public:
 	    {
 	        return -1;
 	    }
-	    return rowindex;
+	    return rowindex;*/
 	    
 	    
 	    // code here
