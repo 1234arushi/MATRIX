@@ -1,4 +1,4 @@
-//https://practice.geeksforgeeks.org/problems/row-with-max-1s0023/1
+//https://practice.geeksforgeeks.org/problems/row-with-max-1s0023/1#
 // { Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
@@ -8,7 +8,9 @@ using namespace std;
 class Solution{
 public:
 	int rowWithMax1s(vector <vector<int>> arr, int n, int m) {
-	    int rowindex=0,count,freq=0;
+	    
+	    int maxcount=INT_MIN;
+	    int rowindex=0,count;
 	    for(int i=0;i<n;i++)
 	    {
 	        count=0;
@@ -18,19 +20,22 @@ public:
 	            {
 	                count++;
 	            }
-	            
 	        }
-	        if(count>freq)
+	        if(count>maxcount)
 	        {
-	            freq=count;
+	            maxcount=count;
 	            rowindex=i;
+	           
 	        }
 	    }
-	    if(freq==0)
+	    if(maxcount==0)//understood why maxcount taken instead of count
+	    //because count=0 for every row whereas maxcount is not
 	    {
 	        return -1;
 	    }
 	    return rowindex;
+	    
+	    
 	    // code here
 	}
 
