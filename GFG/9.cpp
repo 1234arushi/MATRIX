@@ -1,3 +1,29 @@
+//https://leetcode.com/problems/rotate-image/description/
+
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+        int r=matrix.size();
+        int c=matrix[0].size();
+        for(int i=0;i<r;i++)
+        {
+            for(int j=i;j<c;j++)
+            {
+                swap(matrix[i][j],matrix[j][i]);
+            }
+        }
+        for(int i=0;i<r;i++)
+        {
+            for(int j=0;j<c/2;j++)
+            {
+                swap(matrix[i][j],matrix[i][c-j-1]);
+            }
+        }
+        
+    }
+};
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //ques-Given a square matrix, turn it by 90 degrees in clockwise direction without using any extra space/Turn an image by 90 degrees in clockwise direction 
 #include<bits/stdc++.h>
 using namespace std;
