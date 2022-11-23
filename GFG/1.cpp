@@ -1,3 +1,48 @@
+//https://leetcode.com/problems/spiral-matrix/description/
+
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        vector<int> v;
+        int m=matrix.size(),n=matrix[0].size();
+        int startrow=0,startcol=0,endrow=m,endcol=n;
+        while(startrow<endrow && startcol<endcol)
+        {
+            //first row
+            for(int i=startcol;i<endcol;i++)
+            {
+                v.push_back(matrix[startrow][i]);
+            }
+            startrow++;
+            //last col
+            for(int i=startrow;i<endrow;i++)
+            {
+                v.push_back(matrix[i][endcol-1]);
+            }
+            endcol--;
+
+            //last row
+            if(startrow<endrow)//inner rows deal
+            {
+                for(int i=endcol-1;i>=startcol;i--)
+                {
+                    v.push_back(matrix[endrow-1][i]);
+                }
+            }
+            endrow--;
+            if(startcol<endcol)
+            {
+                for(int i=endrow-1;i>=startrow;i--)
+                {
+                    v.push_back(matrix[i][startcol]);
+                }
+            }
+            startcol++;
+        }
+        return v;
+    }
+};
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //https://practice.geeksforgeeks.org/problems/spirally-traversing-a-matrix-1587115621/1
 // { Driver Code Starts
 #include <bits/stdc++.h> 
